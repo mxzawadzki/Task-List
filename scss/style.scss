@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+@mixin active-input {
+  border-bottom: 3px solid $primary-color;
+}
+@mixin active-input-2 {
+  border-bottom: 3px solid $secondary-color;
+}
+@mixin button($property) {
+  padding: .5rem;
+  font-family: $font;
+  font-size: $font-text-size;
+  font-weight: $font-bold;
+  letter-spacing: 0.1rem;
+  width: 100%;
+  color: $tertiary-color;
+  border: none;
+  transition: all .4s;
+  background: $property;
+}
+
+$font: 'Ubuntu', 'Arial', sans-serif;
+$font-text-size: 1rem;
+$font-bold: 700;
+$primary-color: #0091ea;
+$secondary-color: #000;
+$tertiary-color: #fff;
+
+.page {
+  margin: 0;
+  padding: 0;
+  font-family: $font;
+  font-size: $font-text-size;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box; 
+  max-width: 960px;
+}
+
+.header {
+  margin: 0;
+  padding: 0;
+  height: 20vh;
+  background-image: linear-gradient(to right bottom, rgba($secondary-color, 0.8), rgba($primary-color, 0.2)), url(../img/todo.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+
+  &__title {
+    margin: 0;
+    color: $tertiary-color;
+    font-size: 2rem;
+    font-family: $font;
+    position: absolute;
+    top: 2rem;
+    left: 1rem;
+  }
+}
+
+.task-form {
+  height: 2.75rem;
+  padding: 1rem;
+  position: relative;
+
+  &__input {
+    width: 100%;
+    padding: .5rem 0;
+    border: none;
+    border-bottom: 1px solid $primary-color;
+    outline: none;
+    box-sizing: border-box;
+
+    &::placeholder {
+      font-family: $font;
+      font-size: 1rem;
+    }
+
+    &:active {
+      @include active-input;
+    }
+
+    &:focus {
+      @include active-input;
+    }
+  }
+
+  &__label {
+    display: none;
+  }
+
+  &__label--visible {
+    display: inline;
+    position: absolute;
+    right: 1rem;
+    top: 1.5rem;
+  }
+
+  &__button {
+    @include button($primary-color);
+
+    &:hover {
+      background: $tertiary-color;
+      color: $primary-color;
+      cursor: pointer;
+    }
+  }
+}
+
+.task-list {
+  padding: 1rem;
+
+  &__filter {
+    height: 2.75rem;
+  }
+
+  &__title {
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+  }
+
+  &__input {
+    width: 100%;
+    padding: .5rem 0;
+    border: none;
+    border-bottom: 1px solid $secondary-color;
+    outline: none;
+    box-sizing: border-box; 
+
+    &::placeholder {
+      font-family: $font;
+      font-size: 1rem;
+    }
+
+    &:active {
+      @include active-input-2;
+    }
+
+    &:focus {
+      @include active-input-2;
+    }
+  }
+
+  &__label {
+    display: none;
+  }
+
+  &__collection {
+    margin: 1rem 0;
+    padding: 0;
+  }
+
+  &__item {
+    font-size: 1.1rem;
+    margin: .5rem 0;
+    list-style-type: none;
+  }
+
+  &__delete-item {
+    float: right;
+  }
+
+  &__clear-btn {
+    @include button($secondary-color);
+
+    &:hover {
+      background: $tertiary-color;
+      color: $secondary-color;
+      cursor: pointer;
+    }
+  }
+}
