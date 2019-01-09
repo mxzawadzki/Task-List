@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
-@mixin active-input {
-  border-bottom: 3px solid $primary-color;
+@mixin active-input($color) {
+  border-bottom: 3px solid $color;
 }
-@mixin active-input-2 {
-  border-bottom: 3px solid $secondary-color;
-}
+
 @mixin button($property) {
   padding: .5rem;
   font-family: $font;
@@ -43,9 +41,10 @@ $tertiary-color: #fff;
 }
 
 .header {
-  margin: 0;
+  margin: 0 0 2rem 0;
   padding: 0;
   height: 20vh;
+  min-height: 7.5rem;
   background-image: linear-gradient(to right bottom, rgba($secondary-color, 0.8), rgba($primary-color, 0.2)), url(../img/todo.jpg);
   background-size: cover;
   background-position: top;
@@ -57,7 +56,7 @@ $tertiary-color: #fff;
     font-size: 2rem;
     font-family: $font;
     position: absolute;
-    top: 2rem;
+    bottom: 2rem;
     left: 1rem;
   }
 }
@@ -81,11 +80,11 @@ $tertiary-color: #fff;
     }
 
     &:active {
-      @include active-input;
+      @include active-input($primary-color);
     }
 
     &:focus {
-      @include active-input;
+      @include active-input($primary-color);
     }
   }
 
@@ -137,11 +136,11 @@ $tertiary-color: #fff;
     }
 
     &:active {
-      @include active-input-2;
+      @include active-input($secondary-color);
     }
 
     &:focus {
-      @include active-input-2;
+      @include active-input($secondary-color);
     }
   }
 
@@ -171,6 +170,40 @@ $tertiary-color: #fff;
       background: $tertiary-color;
       color: $secondary-color;
       cursor: pointer;
+    }
+  }
+}
+
+@media (min-width: 426px) {
+  .header {
+    height: 25vh;
+    min-height: 10.5rem;
+
+    &__title {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .header {
+    margin-top: 4rem;
+    min-height: 12rem;
+    max-height: 14rem;
+    border-radius: .2rem;
+  }
+
+  .task-form {
+    &__button {
+      width: 18rem;
+      border-radius: .2rem;
+    }
+  }
+
+  .task-list {
+    &__clear-btn {
+      width: 18rem;
+      border-radius: .2rem;
     }
   }
 }
